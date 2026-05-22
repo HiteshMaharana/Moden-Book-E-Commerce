@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subscription Payment</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/subscription.css') }}">
+</head>
+
+<body>
+
+<div class="payment-container">
+
+    <h1>Complete Your Subscription</h1>
+
+    <div class="payment-grid">
+
+        <!-- LEFT SIDE -->
+        <div class="payment-methods">
+
+            <h3>Select Payment Method</h3>
+
+            <label><input type="radio" name="pay"> UPI (Google Pay / PhonePe)</label>
+            <label><input type="radio" name="pay"> Credit / Debit Card</label>
+            <label><input type="radio" name="pay"> Net Banking</label>
+            <label><input type="radio" name="pay"> Wallet</label>
+
+            <div class="upi-box">
+                <input type="text" placeholder="Enter UPI ID">
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="payment-summary">
+
+            <h3>Order Summary</h3>
+
+            <p>Subscription Plan: <strong>Premium</strong></p>
+            <p>Free Trial: 7 Days</p>
+            <p>Price After Trial: ₹9/month</p>
+
+            <hr>
+
+            <h2>Total: ₹9</h2>
+
+            <!-- 🔥 FLASH MESSAGE -->
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div style="color:red; margin-bottom:10px;">
+                    {{ messages[0] }}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <!-- 🔥 FORM START -->
+            <form action="/success_payment" method="POST">
+
+                <!-- Transaction ID -->
+                <input type="text" 
+                       name="txn_id" 
+                       class="txn-input" 
+                       placeholder="Enter Transaction ID" 
+                       required>
+
+                <button type="submit" class="pay-btn">
+                    Proceed to Pay
+                </button>
+
+            </form>
+            <!-- 🔥 FORM END -->
+
+        </div>
+
+    </div>
+
+    <!-- QR SECTION -->
+    <div class="scanner-box">
+
+        <h3>Scan & Pay</h3>
+
+        <img src="{{ url_for('static', filename='images/payment.jpeg') }}" alt="QR Code">
+
+    </div>
+
+    <!-- TERMS -->
+    <div class="terms">
+        <p>By continuing, you agree to our Terms & Conditions and Privacy Policy.</p>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login / Signup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/new.css') }}">
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <!-- Logo Icon -->
+    <div class="logo-icon">◎</div>
+
+    <!-- LOGIN SECTION -->
+<div id="login-section">
+    <h1>Welcome back</h1>
+
+    <!-- GOOGLE LOGIN BUTTON -->
+    <a href="{{ url_for('google_login') }}" class="google-btn">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo">
+        Continue with Google
+    </a>
+
+    <div class="divider">or</div>
+
+    <form method="POST">
+        <input type="hidden" name="action" value="login">
+        <input type="email" name="email" placeholder="Enter email" required>
+        <input type="password" name="password" placeholder="Enter password" required>
+        <button type="submit" class="primary-btn">Continue</button>
+    </form>
+
+    <p class="switch-text">
+        Don't have an account?
+        <a href="#" onclick="showSignup()">Sign up</a>
+    </p>
+</div>
+
+<!-- SIGNUP SECTION -->
+<div id="signup-section" style="display:none;">
+    <h1>Create account</h1>
+
+    <!-- GOOGLE SIGNUP BUTTON -->
+    <a href="{{ url_for('google_login') }}" class="google-btn">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo">
+        Continue with Google
+    </a>
+
+    <div class="divider">or</div>
+
+    <form method="POST">
+        <input type="hidden" name="action" value="signup">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="email" name="email" placeholder="Enter email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit" class="primary-btn">Register</button>
+    </form>
+
+    <p class="switch-text">
+        Already have an account?
+        <a href="#" onclick="showLogin()">Sign in</a>
+    </p>
+    </div>
+</div>
+
+<script>
+function showSignup() {
+    document.getElementById("login-section").style.display = "none";
+    document.getElementById("signup-section").style.display = "block";
+}
+function showLogin() {
+    document.getElementById("signup-section").style.display = "none";
+    document.getElementById("login-section").style.display = "block";
+}
+</script>
+
+</body>
+</html>

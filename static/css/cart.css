@@ -1,0 +1,183 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eaeded;
+    margin: 0;
+}
+
+/* PAGE LAYOUT */
+
+.cart-page {
+    display: flex;
+    width: 92%;
+    margin: auto;
+    margin-top: 30px;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* LEFT SIDE */
+
+.cart-left {
+    background: white;
+    flex: 3;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.cart-left h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.deselect {
+    color: #007185;
+    font-size: 14px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* CART ITEM */
+
+.cart-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 0;
+    gap: 15px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #e3e6e6;
+}
+
+/* CHECKBOX */
+
+.check {
+    margin-top: 30px;
+}
+
+/* IMAGE */
+
+.product-image img {
+    width: 120px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* DETAILS */
+
+.product-details {
+    flex: 2;
+}
+
+.product-details h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.stock {
+    color: #007600;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.delivery {
+    font-size: 13px;
+    color: #555;
+    margin-top: 2px;
+}
+
+/* QUANTITY */
+
+.qty-box {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-box button {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.qty-box span {
+    font-size: 14px;
+}
+
+/* ACTION LINKS */
+
+.item-actions {
+    margin-top: 10px;
+}
+
+.item-actions a {
+    font-size: 13px;
+    color: #007185;
+    margin-right: 12px;
+    text-decoration: none;
+}
+
+.item-actions a:hover {
+    text-decoration: underline;
+}
+
+/* PRICE */
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+/* RIGHT SIDE */
+
+.cart-right {
+    flex: 1;
+}
+
+/* SUBTOTAL BOX */
+
+.subtotal-box {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.free-delivery {
+    color: green;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.subtotal-box h3 {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+/* BUY BUTTON */
+
+.buy-btn {
+    width: 100%;
+    background: #ffd814;
+    color: black;
+    border: none;
+    padding: 12px;
+    margin-top: 12px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.buy-btn:hover {
+    background: #f7ca00;
+}

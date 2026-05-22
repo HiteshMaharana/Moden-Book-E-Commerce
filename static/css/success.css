@@ -1,0 +1,204 @@
+/* ================= BODY ================= */
+body {
+    font-family: 'Poppins', sans-serif;
+
+    background: linear-gradient(180deg,
+        #ffffff 0%,
+        #f8fafc 40%,
+        #f1f5f9 70%,
+        #ffffff 100%);
+
+    color: #0f172a;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+}
+
+/* ================= SOFT LIGHT GLOW ================= */
+.bg-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+
+    background: radial-gradient(circle, rgba(99,102,241,0.15), transparent);
+
+    top: -120px;
+    left: -120px;
+
+    filter: blur(120px);
+
+    animation: moveGlow 10s infinite alternate ease-in-out;
+}
+
+@keyframes moveGlow {
+    0% { transform: translate(0,0); }
+    100% { transform: translate(200px, 150px); }
+}
+
+/* ================= SUCCESS CARD ================= */
+.success-container {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(0,0,0,0.05);
+    border-radius: 20px;
+
+    padding: 40px;
+    width: 420px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.08),
+        0 5px 15px rgba(0,0,0,0.05);
+
+    animation: fadeIn 1s ease;
+}
+
+/* ================= FADE ================= */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= CHECKMARK ================= */
+.checkmark {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+}
+
+.checkmark-circle {
+    stroke: #22c55e;
+    stroke-width: 3;
+    fill: none;
+
+    stroke-dasharray: 157;
+    stroke-dashoffset: 157;
+
+    animation: stroke 1s forwards;
+}
+
+.checkmark-check {
+    stroke: #22c55e;
+    stroke-width: 3;
+    stroke-linecap: round;
+
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+
+    animation: stroke 0.5s 1s forwards;
+}
+
+@keyframes stroke {
+    to { stroke-dashoffset: 0; }
+}
+
+/* ================= TEXT ================= */
+.success-container h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.success-container p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* ================= BUTTON ================= */
+button {
+    padding: 12px 28px;
+    margin-top: 25px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(99,102,241,0.25);
+}
+
+/* ================= BOOK ================= */
+.book {
+    width: 360px;
+    height: 480px;
+
+    margin: 50px auto 0;
+
+    perspective: 1800px;
+    position: relative;
+}
+
+/* ================= PAGE ================= */
+.page {
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    color: #0f172a;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border-radius: 14px;
+    padding: 30px;
+
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.08),
+        inset 0 0 8px rgba(0,0,0,0.03);
+
+    transform: rotateY(180deg);
+    transform-origin: left;
+
+    transition: transform 0.9s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+/* ================= ACTIVE ================= */
+.page.active {
+    transform: rotateY(0deg);
+    z-index: 3;
+}
+
+/* ================= FLIPPED ================= */
+.page.flipped {
+    transform: rotateY(-180deg);
+    z-index: 1;
+}
+
+/* ================= TEXT ================= */
+.page h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.page p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* ================= CONTROLS ================= */
+.controls {
+    margin-top: 25px;
+}
+
+.controls button {
+    margin: 5px;
+}

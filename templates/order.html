@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Order Tracking</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/order.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="order-container">
+
+    <!-- 🔥 TOP RIGHT TRACK BUTTON -->
+    <a href="{{ url_for('track_order') }}" class="track-btn">
+        <i class="fa-solid fa-truck"></i> Track Order
+    </a>
+
+    <h2 class="title">
+        <i class="fa-solid fa-box"></i> Order Details
+    </h2>
+
+    <!-- ✅ SINGLE PRODUCT -->
+    {% if product %}
+    <div class="order-info">
+
+        <p><i class="fa-solid fa-box"></i>
+            Product:
+            <strong>{{ product.title }}</strong>
+        </p>
+
+        <p><i class="fa-solid fa-indian-rupee-sign"></i>
+            Price:
+            <strong>₹{{ product.price }}</strong>
+        </p>
+
+        <p>
+            <img src="{{ url_for('static', filename=product.image) }}" width="120">
+        </p>
+
+        <p><i class="fa-solid fa-circle-check"></i>
+            Status:
+            <strong style="color:green;">Order Confirmed</strong>
+        </p>
+
+        <p><i class="fa-solid fa-location-dot"></i>
+            Delivery Location:
+            <strong>
+                {{ address[2] if address else "India" }},
+                {{ address[4] if address else "" }},
+                {{ address[5] if address else "" }}
+            </strong>
+        </p>
+
+        <p><i class="fa-solid fa-truck"></i>
+            Delivery Partner:
+            <strong>Delhivery (Fast Delivery)</strong>
+        </p>
+
+        <p><i class="fa-solid fa-clock"></i>
+            Estimated Delivery:
+            <strong>3-5 Business Days</strong>
+        </p>
+
+        <p><i class="fa-solid fa-calendar"></i>
+            Order Date:
+            <strong>{{ current_date if current_date else "Today" }}</strong>
+        </p>
+
+    </div>
+    <hr>
+    {% endif %}
+
+
+    <!-- ✅ CART ITEMS -->
+    {% if cart %}
+    {% for item in cart %}
+
+    <div class="order-info">
+
+        <p><i class="fa-solid fa-box"></i>
+            Product:
+            <strong>{{ item.title }}</strong>
+        </p>
+
+        <p><i class="fa-solid fa-indian-rupee-sign"></i>
+            Price:
+            <strong>₹{{ item.price }}</strong>
+        </p>
+
+        <p>
+            <img src="{{ url_for('static', filename=item.image) }}" width="120">
+        </p>
+
+        <p><i class="fa-solid fa-circle-check"></i>
+            Status:
+            <strong style="color:green;">Order Confirmed</strong>
+        </p>
+
+        <p><i class="fa-solid fa-location-dot"></i>
+            Delivery Location:
+            <strong>
+                {{ address[2] if address else "India" }},
+                {{ address[4] if address else "" }},
+                {{ address[5] if address else "" }}
+            </strong>
+        </p>
+
+        <p><i class="fa-solid fa-truck"></i>
+            Delivery Partner:
+            <strong>Delhivery (Fast Delivery)</strong>
+        </p>
+
+        <p><i class="fa-solid fa-clock"></i>
+            Estimated Delivery:
+            <strong>3-5 Business Days</strong>
+        </p>
+
+        <p><i class="fa-solid fa-calendar"></i>
+            Order Date:
+            <strong>{{ current_date if current_date else "Today" }}</strong>
+        </p>
+
+    </div>
+    <hr>
+
+    {% endfor %}
+    {% endif %}
+
+
+    <!-- ❌ NO ORDER -->
+    {% if not product and not cart %}
+        <p>No order found.</p>
+    {% endif %}
+
+
+    <!-- ✅ FULL ADDRESS -->
+    {% if address %}
+    <div class="order-info" style="margin-top:20px;">
+
+        <h3>Delivery Address</h3>
+
+        <p><strong>{{ address[2] }}</strong></p>
+        <p>{{ address[4] }}, {{ address[5] }}</p>
+        <p>{{ address[7] }} - {{ address[3] }}</p>
+        <p>{{ address[8] }}</p>
+        <p><b>Phone:</b> {{ address[3] }}</p>
+
+    </div>
+    {% endif %}
+
+
+    <!-- ✅ MAP (UNCHANGED LOGIC) -->
+    <div class="map-box">
+
+    <h3>📍 Delivery Location</h3>
+
+    <iframe width="100%" height="260"
+        src="https://maps.google.com/maps?q={{ address[4] }}&output=embed">
+    </iframe>
+
+    <!-- 🔥 PROFESSIONAL BUTTON -->
+    <a href="https://www.google.com/maps/search/?api=1&query={{ address[4] }}"
+       target="_blank"
+       class="map-btn">
+        <span>📍</span> Open in Google Maps
+    </a>
+
+</div>
+
+</div>
+
+</body>
+</html>

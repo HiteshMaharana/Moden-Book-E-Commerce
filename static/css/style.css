@@ -1,0 +1,1077 @@
+/* ================= GLOBAL SMOOTH EFFECT ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    transition:
+        background-color .35s ease,
+        transform .35s ease,
+        box-shadow .35s ease,
+        color .25s ease,
+        opacity .35s ease;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+
+    /* Smooth soft gradient (white + light colors) */
+    background: linear-gradient(135deg,
+        #ffffff 0%,
+        #f8f9ff 25%,
+        #f3f6ff 50%,
+        #f9f9fb 75%,
+        #ffffff 100%
+    );
+
+    color: #111;
+    overflow-x: hidden;
+
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+
+    animation: pageLoad .7s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(15px);
+    margin: 25px;
+    padding: 20px 50px;
+    border-radius: 60px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+    transition: 0.4s ease;
+
+    position: sticky;
+    top: 10px;
+    z-index: 1000;
+}
+
+.navbar:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 18px;
+}
+
+
+/* NAV LINKS */
+
+nav a {
+    margin: 0 18px;
+    text-decoration: none;
+    color: #444;
+    font-size: 14px;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: black;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: black;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+/* Sign up normal text */
+
+.signup-link {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+
+/* Log in rounded dark button */
+.login-btn {
+    text-decoration: none;
+    background-color: #6D28D9;
+    color: white;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-weight: 500;
+}
+
+.login-btn:hover {
+    background-color: #6D28D9;
+    transform: translateY(-2px);
+}
+
+
+/* After login */
+
+.welcome-text {
+    font-weight: 500;
+}
+
+.logout-btn {
+    text-decoration: none;
+    background-color: #0b0b2d;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 25px;
+}
+
+.toggle-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.toggle-buttons span {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.toggle-buttons .active {
+    background-color: #0b0b2d;
+    color: white;
+}
+
+
+
+/* ================= SEARCH BOX ================= */
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #f3f3f3;
+    padding: 6px 12px;
+    border-radius: 40px;
+    margin-left: 20px;
+}
+
+.search-container input {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    padding: 6px;
+    width: 300px;
+}
+
+.search-container button {
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    transform: scale(1.1);
+}
+
+/* Focus Effect */
+
+.search-container.active {
+    background: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ----------ADDRESS BOX----------- */
+
+.address-box {
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    background: white;
+    color: black;
+
+    padding: 6px 14px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    margin-left: 15px;
+}
+
+.address-box:hover {
+
+    background: #f3f3f3;
+}
+
+.address-text {
+
+    display: flex;
+    flex-direction: column;
+
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.deliver {
+
+    opacity: 0.8;
+    font-size: 11px;
+}
+
+.location {
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ================= HERO ================= */
+
+.hero {
+
+    height: 65vh;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.35)),
+        url('../images/onepiece.jpg') center/cover no-repeat;
+
+    border-radius: 35px;
+    margin: 20px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.hero-content h1 {
+    font-size: 56px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 16px;
+    color: #f1f1f1;
+    margin-bottom: 30px;
+}
+
+
+
+/* ================= CATEGORY CARDS ================= */
+
+.categories {
+    display: flex;
+    gap: 40px;
+    padding: 80px 60px;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    width: 300px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.card h3 {
+    padding: 22px;
+    font-weight: 600;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+
+
+/* ================= CATEGORY BAR ================= */
+
+.category-bar {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 25px;
+    margin: 25px;
+
+    border-radius: 40px;
+
+    background: #f3f3f3;
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+
+}
+
+
+
+/* ================= LEFT MENU ================= */
+
+.left-menu {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* ================= DROPDOWN ================= */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    transition: 0.3s;
+}
+
+.dropdown-btn:hover {
+    background: #f7f7f7;
+}
+
+
+
+/* DROPDOWN MENU */
+
+.dropdown-menu {
+
+    position: absolute;
+
+    top: 120%;
+    left: 0;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    min-width: 160px;
+
+    padding: 8px 0;
+
+    display: none;
+
+    z-index: 100;
+}
+
+
+
+/* SHOW WHEN ACTIVE */
+
+.dropdown.active .dropdown-menu {
+    display: block;
+}
+
+
+
+/* DROPDOWN LINKS */
+
+.dropdown-menu a {
+
+    display: block;
+
+    padding: 10px 16px;
+
+    text-decoration: none;
+
+    color: #333;
+
+    font-size: 14px;
+}
+
+.dropdown-menu a:hover {
+    background: #f3f3f3;
+}
+
+
+
+/* ================= CENTER MENU ================= */
+
+.center-menu {
+
+    display: flex;
+
+    gap: 22px;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+}
+
+
+
+.center-menu a {
+
+    text-decoration: none;
+
+    color: #333;
+
+    font-size: 14px;
+
+    padding: 6px 12px;
+
+    border-radius: 20px;
+
+    transition: 0.25s;
+
+}
+
+
+
+/* ================= RIGHT MENU ================= */
+
+.right-menu {
+    display: flex;
+    align-items: center;
+}
+
+
+
+/* FILTER BUTTON */
+
+.filter-btn {
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+.filter-btn:hover {
+
+    background: #A78BFA;
+
+    color: white;
+
+    transform: translateY(-2px);
+
+}
+
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px) {
+
+    .category-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .center-menu {
+        justify-content: center;
+    }
+
+}
+
+/* ================= FEATURES BANNER ================= */
+
+.features {
+
+    background: #232f3e;
+    color: #ffffff;
+
+    overflow: hidden;
+    position: relative;
+
+    padding: 20px 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Moving container */
+.features-track {
+    display: flex;
+    gap: 80px;
+    white-space: nowrap;
+    animation: moveBanner 8s linear infinite;
+}
+
+/* Each item */
+
+.features-track div {
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: 0.3s;
+}
+
+/* Hover effect */
+
+.features-track div:hover {
+
+    color: #FFD814;
+    transform: scale(1.05);
+}
+
+/* Moving animation */
+
+@keyframes moveBanner {
+
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* Neon gradient highlight */
+
+.features::before {
+
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(120deg,
+            transparent,
+            rgba(255, 255, 255, 0.05),
+            transparent);
+
+    animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
+
+}
+
+
+
+/* ================= DESIGN GRID ================= */
+
+.design-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 28px;
+    padding: 40px 40px 80px;
+}
+
+
+/* ================= CARD ================= */
+
+.design-card {
+
+    background: #fff;
+    border-radius: 16px;
+
+    border: 1px solid #eee;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    transition: all .35s ease;
+}
+
+.design-card:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ================= IMAGE ================= */
+
+.img-box {
+
+    position: relative;
+
+    height: 260px;
+
+    background: #fafafa;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.img-box img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 12px;
+
+    transition: transform .4s ease;
+}
+
+.design-card:hover .img-box img {
+    transform: scale(1.08);
+}
+
+
+/* ================= PRODUCT INFO ================= */
+
+.product-info {
+
+    padding: 16px 18px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.brand {
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #111;
+}
+
+.title {
+
+    font-size: 13px;
+
+    color: #666;
+
+    line-height: 1.4;
+
+    min-height: 32px;
+}
+
+
+/* ================= RATING ================= */
+
+.rating {
+
+    font-size: 13px;
+
+    color: #f59e0b;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.rating span {
+
+    color: #666;
+
+    font-size: 12px;
+}
+
+
+/* ================= PRICE ================= */
+
+.price-box {
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 4px;
+}
+
+.price {
+
+    font-weight: 700;
+
+    font-size: 16px;
+
+    color: #111;
+}
+
+.old-price {
+
+    text-decoration: line-through;
+
+    color: #999;
+
+    font-size: 13px;
+}
+
+.discount {
+
+    color: #ff6a00;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+
+/* ================= ACTIONS ================= */
+
+.card-actions {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 14px 18px;
+
+    border-top: 1px solid #eee;
+
+    margin-top: auto;
+}
+
+.fav-btn {
+
+    font-size: 18px;
+
+    color: #bbb;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.fav-btn:hover {
+    color: red;
+}
+
+
+/* ================= BUTTON ================= */
+
+.buy-btn {
+
+    background: #A78BFA;
+
+    border: none;
+
+    padding: 9px 18px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition: all .25s ease;
+}
+
+.buy-btn:hover {
+
+    background: #6D28D9;
+
+    transform: translateY(-2px);
+}
+
+.buy-btn:active {
+    transform: scale(0.95);
+}
+
+
+
+/* ================= BANNER ================= */
+
+.banner {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 100px 80px;
+
+    background: #ffffff;
+
+    border-radius: 35px;
+    margin: 50px 25px;
+
+    position: relative;
+    overflow: hidden;
+
+}
+
+/* Soft glow background */
+
+.banner::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.12), transparent 70%);
+
+    top: -120px;
+    left: -120px;
+
+    filter: blur(70px);
+}
+
+/* Banner Text */
+
+.banner-text h2 {
+
+    font-size: 42px;
+    font-weight: 700;
+
+    color: #1e293b;
+
+    margin-bottom: 15px;
+}
+
+.banner-text p {
+
+    font-size: 16px;
+    color: #475569;
+
+    margin-bottom: 25px;
+}
+
+/* Button */
+
+.primary-btn {
+
+    background: #7C3AED;
+    color: white;
+
+    padding: 14px 34px;
+
+    border: none;
+    border-radius: 30px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+
+    transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+
+    background: #6D28D9;
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 15px 35px rgba(124, 58, 237, 0.4);
+}
+
+/* Image */
+
+.banner img {
+
+    width: 420px;
+
+    border-radius: 25px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+/* Hover zoom */
+
+.banner img:hover {
+
+    transform: scale(1.06);
+}
+
+/* Floating animation */
+
+@keyframes floatImage {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+/* ================= FOOTER ================= */
+
+.footer {
+
+    background: #111;
+
+    color: #fff;
+
+    padding: 60px 50px 30px;
+
+    margin-top: 80px;
+}
+
+.footer-container {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 40px;
+}
+
+.footer-links a {
+
+    display: block;
+
+    text-decoration: none;
+
+    color: #bbb;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(40px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+@keyframes pageLoad {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+
+/* ================= 3D animation ================= */

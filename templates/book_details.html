@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Book Details</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}">
+</head>
+
+<body>
+
+    <section class="details-page">
+
+        <div class="details-container">
+
+            <!-- LEFT IMAGE -->
+            <div class="image-section">
+
+                <div class="main-img">
+                    <img src="{{ url_for('static', filename=image) }}" alt="">
+                </div>
+
+                <div class="thumbs">
+                    <img src="{{ url_for('static', filename=image) }}">
+                </div>
+
+            </div>
+
+            <!-- RIGHT INFO -->
+            <div class="info-section">
+
+                <div class="brand">Bookish</div>
+
+                <h1 class="title">{{ title }}</h1>
+
+                <div class="rating">
+                    ★★★★☆ <span>(4.5 Reviews)</span>
+                </div>
+
+                <div class="price-box">
+
+                    <span class="price">Rs. {{ price }}</span>
+                    <span class="old-price">Rs. {{ price * 2 }}</span>
+                    <span class="discount">50% OFF</span>
+
+                </div>
+
+                <p class="desc">
+                    Premium quality product with modern design.
+                    Best choice for daily use.
+                </p>
+
+                <div class="action-buttons">
+
+                    <form action="{{ url_for('add_to_cart') }}" method="POST">
+
+                        <input type="hidden" name="title" value="{{ title }}">
+                        <input type="hidden" name="price" value="{{ price }}">
+                        <input type="hidden" name="image" value="{{ image }}">
+
+                        <button class="cart-btn">Add to Cart</button>
+
+                    </form>
+
+                    <a class="buy-btn" href="{{ url_for('order_page') }}">Place Order</a>
+
+                    <a class="read-btn" href="{{ url_for('read_page', pdf=pdf) }}">
+                        Start Reading
+                    </a>
+
+                </div>
+
+                <!-- SUBSCRIPTION BOX -->
+                <div class="subscription-box">
+
+                    <h2>7 Days Free Trial</h2>
+
+                    <p class="sub-price">
+                        Only ₹9 after trial
+                    </p>
+
+                    <p class="sub-desc">
+                        Get unlimited access to premium books, exclusive content, and offers.
+                    </p>
+
+                    <a href="{{ url_for('subscription') }}" class="subscribe-btn">
+                        Start Subscription
+                    </a>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

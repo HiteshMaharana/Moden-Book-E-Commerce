@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Rental Blog</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= BLOG ================= -->
+<section class="blog-section">
+
+    <h2 class="section-title">📚 Book Rental Articles</h2>
+
+    <div class="blog-grid">
+
+        <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851">
+            <div class="blog-content">
+                <span class="tag">Guide</span>
+                <h3>How to Choose Books</h3>
+                <p>Find the perfect books for your reading journey.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794">
+            <div class="blog-content">
+                <span class="tag">Tips</span>
+                <h3>Why Renting Books is Smart</h3>
+                <p>Save money and enjoy unlimited reading.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+        <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66">
+            <div class="blog-content">
+                <span class="tag">Library</span>
+                <h3>Top Books to Read</h3>
+                <p>Explore trending books in our rental system.</p>
+                <a href="#">Read More →</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TEAM ================= -->
+<section class="team-section">
+
+    <h2 class="team-title">Meet The Team</h2>
+
+    <div class="team-container">
+
+        <!-- MEMBER 1 -->
+        <div class="team-card gradient1">
+            <img src="{{ url_for('static', filename='images/dona.jpeg') }}" alt="Member 1">
+            <h3>Your Name</h3>
+            <span>Frontend Developer</span>
+            <p>Designed clean and user-friendly interfaces for the book rental system.</p>
+
+            <div class="social">
+                <a href="https://www.linkedin.com/in/hitesh-maharana-959738326/" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- MEMBER 2 -->
+        <div class="team-card gradient2">
+            <img src="{{ url_for('static', filename='images/googly.jpeg') }}" alt="Member 2">
+            <h3>Teammate</h3>
+            <span>Backend Developer</span>
+            <p>Handled database, authentication, and core system logic.</p>
+
+            <div class="social">
+                <a href="https://www.linkedin.com/in/hitesh-maharana-959738326/" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- MEMBER 3 -->
+        <div class="team-card gradient3">
+            <img src="{{ url_for('static', filename='images/lala.jpeg') }}" alt="Member 3">
+            <h3>Teammate</h3>
+            <span>UI Designer</span>
+            <p>Created modern UI/UX to enhance user experience.</p>
+
+            <div class="social">
+                <a href="https://www.linkedin.com/in/hitesh-maharana-959738326/" target="_blank">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

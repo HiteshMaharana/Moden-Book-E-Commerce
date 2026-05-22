@@ -1,0 +1,185 @@
+/* ================= BASE ================= */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #eef2f7, #f8f9fb);
+    margin: 0;
+    padding: 0;
+    transform: scale(1.02); /* 🔥 Slight zoom */
+}
+
+/* ================= CONTAINER ================= */
+.order-container {
+    width: 75%;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* ================= TRACK BUTTON ================= */
+.track-btn {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: linear-gradient(90deg, #2874f0, #00c6ff);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.track-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ================= TITLE ================= */
+.title {
+    color: #2874f0;
+    margin-bottom: 25px;
+    font-size: 30px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ================= ORDER CARD ================= */
+.order-info {
+    background: #fafafa;
+    padding: 22px;
+    border-radius: 14px;
+    margin-bottom: 22px;
+    border: 1px solid #eee;
+    transition: 0.3s ease;
+}
+
+.order-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* ================= TEXT ================= */
+.order-info p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.order-info strong {
+    color: #111;
+}
+
+/* ================= IMAGE ================= */
+.order-info img {
+    border-radius: 12px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.order-info img:hover {
+    transform: scale(1.08);
+}
+
+/* ================= STATUS ================= */
+.order-info strong[style] {
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: #e6f4ea;
+    color: #2e7d32 !important;
+    font-size: 14px;
+}
+
+/* ================= MAP ================= */
+.map-box {
+    margin-top: 40px;
+}
+
+.map-box h3 {
+    margin-bottom: 12px;
+    color: #2874f0;
+}
+
+iframe {
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* ================= DIVIDER ================= */
+hr {
+    border: none;
+    border-top: 1px dashed #ddd;
+    margin: 20px 0;
+}
+
+/* ================= MAP SECTION ================= */
+.map-box {
+    margin-top: 40px;
+    padding: 15px;
+    background: #fafafa;
+    border-radius: 14px;
+    border: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.map-box:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.map-box h3 {
+    margin-bottom: 12px;
+    color: #2874f0;
+    font-size: 18px;
+}
+
+/* MAP FRAME */
+.map-box iframe {
+    width: 100%;
+    height: 260px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* ================= GOOGLE MAP BUTTON ================= */
+.map-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    background: linear-gradient(90deg, #2874f0, #00c6ff);
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.map-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    body {
+        transform: scale(1);
+    }
+
+    .order-container {
+        width: 92%;
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Reading Mode</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/read.css') }}">
+
+</head>
+
+<body oncontextmenu="return false;">
+
+<!-- HEADER -->
+<div class="reader-header">
+    <h2>📖 Book Reader</h2>
+    <a href="/" class="back-btn">⬅ Back</a>
+</div>
+
+<!-- BOOK WRAPPER -->
+<div class="book-wrapper">
+
+    <div class="book">
+
+        {% if pdf %}
+        <iframe id="pdfFrame"
+            src="{{ url_for('static', filename='pdfs/' + pdf) }}#toolbar=0&navpanes=0">
+        </iframe>
+        {% else %}
+        <h2>No Book Selected</h2>
+        {% endif %}
+
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="reader-controls">
+        <button onclick="zoomIn()">＋</button>
+        <button onclick="zoomOut()">－</button>
+        <button onclick="toggleMode()">🌙</button>
+    </div>
+
+</div>
+
+<script>
+let zoom = 1;
+
+function zoomIn() {
+    zoom += 0.1;
+    document.getElementById("pdfFrame").style.transform = `scale(${zoom})`;
+}
+
+function zoomOut() {
+    zoom -= 0.1;
+    document.getElementById("pdfFrame").style.transform = `scale(${zoom})`;
+}
+
+// Eye comfort toggle
+let dark = true;
+
+function toggleMode() {
+    const body = document.body;
+
+    if (dark) {
+        body.classList.add("light-mode");
+    } else {
+        body.classList.remove("light-mode");
+    }
+
+    dark = !dark;
+}
+
+// block shortcuts
+document.addEventListener("keydown", function(e) {
+    if (
+        (e.ctrlKey && e.key === 's') ||
+        (e.ctrlKey && e.key === 'p')
+    ) {
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>

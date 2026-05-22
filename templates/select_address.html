@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Select Address</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/address_select.css') }}">
+
+</head>
+
+<body>
+
+    <h1 style="margin-left:50px;">Your Addresses</h1>
+
+    <div class="address-container">
+
+        <a class="add-card" href="{{ url_for('add_address') }}">
+            +
+            <p>Add Address</p>
+        </a>
+
+        {% for address in addresses %}
+
+        <div class="address-card">
+
+            <strong>{{ address.full_name }}</strong>
+
+            <p>
+                {{ address.house }},
+                {{ address.area }}
+            </p>
+
+            <p>
+                {{ address.city }} {{ address.pincode }}
+            </p>
+
+            <p>
+                {{ address.state }}
+            </p>
+
+            <p>
+                Phone: {{ address.mobile }}
+            </p>
+
+            <a class="deliver-btn" href="{{ url_for('order_page') }}">
+                Deliver to this address
+
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>

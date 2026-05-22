@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bookish</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Forum&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">BOOKISH</div>
+
+    <!-- ADDRESS BOX -->
+    <a href="{{ url_for('add_address') }}" class="address-box">
+
+        <i class="fa-solid fa-location-dot"></i>
+
+        <div class="address-text">
+
+            <span class="deliver">
+                Deliver to
+            </span>
+
+            <strong>
+                {{ session.get('username','Guest') }}
+            </strong>
+
+            <span class="location">
+                Add Address
+            </span>
+
+        </div>
+
+    </a>
+
+    <!-- SEARCH BOX -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search books...">
+        <button>
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+    </div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="{{ url_for('blog') }}">Blog</a>
+        <a href="{{ url_for('order_page', order_id=1) }}">ORDER</a>
+
+        <a href="{{ url_for('cart') }}">
+            <i class="fa-solid fa-cart-arrow-down"></i>
+        </a>
+    </nav>
+
+    <div class="nav-actions">
+
+        {% if 'users' in session %}
+
+        <span class="welcome-text">
+            Hi, {{ session['username'] }}
+        </span>
+
+        <a href="{{ url_for('logout') }}" class="logout-btn">
+            Logout
+        </a>
+
+        {% else %}
+
+        <a href="{{ url_for('auth') }}" class="signup-link">
+            Sign up
+        </a>
+
+        <a href="{{ url_for('auth') }}" class="login-btn">
+            Log in
+        </a>
+
+        {% endif %}
+
+    </div>
+
+</header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Art of Modern <br> Reading Life</h1>
+            <p>Premium books curated for modern readers.</p>
+        </div>
+    </section>
+
+
+
+
+    <!-- ================= POPULAR SECTION ================= -->
+
+    <section class="category-bar">
+
+        <!-- LEFT MENU (Dropdown) -->
+        <div class="left-menu">
+            <div class="dropdown">
+                <button class="dropdown-btn">
+                    Popular <span class="arrow">▾</span>
+                </button>
+
+                <div class="dropdown-menu">
+                    <a href="#">Trending</a>
+                    <a href="#">Best Sellers</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CENTER MENU -->
+        <div class="center-menu">
+            <a href="#">Discover</a>
+            <a href="#">Animation</a>
+            <a href="#">Branding</a>
+            <a href="#">Illustration</a>
+            <a href="#">Mobile</a>
+            <a href="#">Print</a>
+            <a href="#" class="active">Product Design</a>
+            <a href="#">Typography</a>
+            <a href="#">Web Design</a>
+        </div>
+
+        <!-- RIGHT MENU -->
+        <div class="right-menu">
+            <button class="filter-btn">☰ Filters</button>
+        </div>
+
+    </section>
+
+
+    <!-- ================= DESIGNING CARD GRID ================= -->
+    <section class="design-grid">
+
+    <!-- CARD 1 -->
+    <div class="design-card">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Dragon BallZ', price=299, image='images/novel12.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel12.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 299</span>
+                <span class="old-price">Rs. 599</span>
+                <span class="discount">(50% OFF)</span>
+            </div>
+        </div>
+
+        <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Dragon BallZ">
+                <input type="hidden" name="price" value="299">
+                <input type="hidden" name="image" value="images/novel12.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 2 -->
+    <div class="design-card">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Discent of Lighting', price=671, image='images/novel13.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel13.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 671</span>
+                <span class="old-price">Rs. 1599</span>
+                <span class="discount">(58% OFF)</span>
+            </div>
+        </div>
+
+        <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Discent of Lighting">
+                <input type="hidden" name="price" value="671">
+                <input type="hidden" name="image" value="images/novel13.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 3 -->
+    <div class="design-card">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Lated Reign', price=463, image='images/novel14.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel14.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 463</span>
+                <span class="old-price">Rs. 799</span>
+                <span class="discount">(42% OFF)</span>
+
+                
+            </div>
+        </div>
+
+        <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Lated Reign">
+                <input type="hidden" name="price" value="463">
+                <input type="hidden" name="image" value="images/novel14.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 4 -->
+    <div class="design-card">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Stranger Things', price=558, image='images/novel15.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel15.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 558</span>
+                <span class="old-price">Rs. 649</span>
+                <span class="discount">(14% OFF)</span>
+            </div>
+        </div>
+
+        <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Stranger Things">
+                <input type="hidden" name="price" value="558">
+                <input type="hidden" name="image" value="images/novel15.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 5 -->
+    <div class="design-card">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Solo Leveling', price=399, image='images/novel16.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel16.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 399</span>
+                <span class="old-price">Rs. 799</span>
+                <span class="discount">(50% OFF)</span>
+            </div>
+        </div>
+
+        <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+    <section class="design-grid">
+
+    <!-- CARD 1 -->
+    <div class="design-card" data-title="humour graphic t-shirt">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Humour Graphic T-shirt', price=299, image='images/novel2.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel2.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 299</span>
+                <span class="old-price">Rs. 599</span>
+                <span class="discount">(50% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 2 -->
+    <div class="design-card" data-title="print polo collar slim t-shirt">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Print Polo Collar Slim T-shirt', price=671, image='images/novel3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel3.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 671</span>
+                <span class="old-price">Rs. 1599</span>
+                <span class="discount">(58% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 3 -->
+    <div class="design-card" data-title="crew neck lounge tshirt">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Crew Neck Lounge Tshirt', price=463, image='images/novel4.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel4.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 463</span>
+                <span class="old-price">Rs. 799</span>
+                <span class="discount">(42% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 4 -->
+    <div class="design-card" data-title="solid lounge t-shirt">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Solid Lounge T-shirt', price=558, image='images/novel5.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel5.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"> </div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 558</span>
+                <span class="old-price">Rs. 649</span>
+                <span class="discount">(14% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 5 -->
+    <div class="design-card" data-title="casual cotton t-shirt">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Casual Cotton T-shirt', price=399, image='images/novel6.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel6.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"> </div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 399</span>
+                <span class="old-price">Rs. 799</span>
+                <span class="discount">(50% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+</section>
+
+    <section class="design-grid">
+
+    <!-- CARD 1 -->
+    <div class="design-card" data-title="classic novel collection">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Classic Novel Collection', price=299, image='images/novel7.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel7.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 299</span>
+                <span class="old-price">Rs. 599</span>
+                <span class="discount">(50% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 2 -->
+    <div class="design-card" data-title="adventure novel">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Adventure Novel', price=349, image='images/novel8.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel8.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 349</span>
+                <span class="old-price">Rs. 699</span>
+                <span class="discount">(50% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 3 -->
+    <div class="design-card" data-title="mystery story book">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Mystery Story Book', price=399, image='images/novel9.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel9.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 399</span>
+                <span class="old-price">Rs. 799</span>
+                <span class="discount">(50% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 4 -->
+    <div class="design-card" data-title="fiction bestseller">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Fiction Bestseller', price=459, image='images/novel10.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel10.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 459</span>
+                <span class="old-price">Rs. 899</span>
+                <span class="discount">(49% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+
+    <!-- CARD 5 -->
+    <div class="design-card" data-title="modern literature book">
+
+        <div class="img-box">
+            <a href="{{ url_for('book_details', title='Modern Literature Book', price=420, image='images/novel11.jpg') }}">
+                <img src="{{ url_for('static', filename='images/novel11.jpg') }}" alt="">
+            </a>
+        </div>
+
+        <div class="product-info">
+            <div class="brand"></div>
+            <div class="title"></div>
+
+            <div class="rating">
+                ★★★★☆ <span>(4.5)</span>
+            </div>
+
+            <div class="price-box">
+                <span class="price">Rs. 420</span>
+                <span class="old-price">Rs. 799</span>
+                <span class="discount">(47% OFF)</span>
+            </div>
+
+            <div class="card-actions">
+            <div class="fav-btn">❤</div>
+
+            <form action="{{ url_for('add_to_cart') }}" method="POST">
+                <input type="hidden" name="title" value="Solo Leveling">
+                <input type="hidden" name="price" value="399">
+                <input type="hidden" name="image" value="images/novel16.jpg">
+
+                <button type="submit" class="buy-btn">Add to Cart</button>
+            </form>
+        </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+    <!-- FEATURES BAR -->
+    <section class="features">
+
+        <div class="features-track">
+
+            <div>🚚 Free Shipping</div>
+            <div>✔ Quality Assurance</div>
+            <div>↩ Easy Returns</div>
+            <div>💬 24/7 Support</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- BANNER SECTION -->
+    <section class="banner">
+        <div class="banner-text">
+            <h2>Discover Knowledge Everyday</h2>
+            <p>Explore thousands of books with modern experience.</p>
+        </div>
+
+        <img src="{{ url_for('static', filename='images/banner.jpg') }}">
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <!-- LEFT SIDE -->
+            <div class="footer-about">
+                <h3>BOOKISH</h3>
+                <p>Premium books curated for modern readers.</p>
+            </div>
+
+            <!-- SUPPORT -->
+            <div class="footer-links">
+                <h4>Support</h4>
+                <a href="#">Help Center</a>
+                <a href="#">FAQs</a>
+                <a href="#">Shipping Info</a>
+                <a href="#">Returns</a>
+            </div>
+
+            <!-- CUSTOMER CARE -->
+            <div class="footer-links">
+                <h4>Customer Care</h4>
+                <a href="{{ url_for('contact') }}">Contact Us</a>
+                <a href="{{ url_for('privacy') }}">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+
+            <!-- SOCIAL MEDIA -->
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/hitesh-maharana-959738326/"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/hitesh-maharana-959738326/"><i
+                            class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Bookish. All rights reserved.</p>
+        </div>
+
+    </footer>
+    <script>
+        
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function () {
+
+    let filter = searchInput.value.toLowerCase();
+    let cards = document.querySelectorAll(".design-card");
+
+    cards.forEach(card => {
+
+        let title = card.getAttribute("data-title");
+
+        if (title.includes(filter)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+});
+
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

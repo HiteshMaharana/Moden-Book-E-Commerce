@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping Cart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+
+</head>
+
+<body>
+
+    <div class="cart-page">
+
+        <!-- LEFT CART ITEMS -->
+
+        <div class="cart-left">
+
+            <h1>Shopping Cart</h1>
+            
+
+            <div class="deselect">Deselect all items</div>
+
+            <hr>
+
+            {% for item in cart %}
+
+            <div class="cart-item">
+
+                <div class="check">
+                    <input type="checkbox" checked>
+                </div>
+
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename=item.image) }}">
+                </div>
+
+                <div class="product-details">
+
+                    <h2>{{ item.title }}</h2>
+
+                    <p class="stock">In stock</p>
+
+                    <p class="delivery">FREE delivery available</p>
+
+                    <div class="qty-box">
+
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+
+                    </div>
+
+                    <div class="item-actions">
+
+                        <a href="{{ url_for('delete_item', index=loop.index0) }}">Delete</a>
+                        <a href="#">Save for later</a>
+                        <a href="#">Share</a>
+
+                    </div>
+
+                </div>
+
+                <div class="product-price">
+
+                    ₹{{ item.price }}
+
+                </div>
+
+            </div>
+
+            <hr>
+
+            {% endfor %}
+
+        </div>
+
+
+        <!-- RIGHT SIDE TOTAL -->
+
+        <div class="cart-right">
+
+            <div class="subtotal-box">
+
+                <p class="free-delivery">
+                    ✔ Part of your order qualifies for FREE Delivery
+                </p>
+
+                <h3>
+                    Subtotal ({{ cart|length }} items):
+                </h3>
+
+                <a class="buy-btn" href="{{ url_for('order_page') }}">Place Order</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

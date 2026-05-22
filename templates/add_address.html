@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Add Address</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/address.css') }}">
+
+</head>
+
+<body>
+
+<div class="address-container">
+
+<h2>Add a new address</h2>
+
+<form method="POST">
+
+<label>Country/Region</label>
+<select>
+<option>India</option>
+</select>
+
+<label>Full name</label>
+<input type="text" name="full_name" required>
+
+<label>Mobile number</label>
+<input type="text" name="mobile" required>
+
+<label>Pincode</label>
+<input type="text" name="pincode" required>
+
+<label>Flat, House no., Building</label>
+<input type="text" name="house">
+
+<label>Area, Street, Sector</label>
+<input type="text" name="area">
+
+<label>Landmark</label>
+<input type="text" name="landmark">
+
+<div class="row">
+
+<div class="col">
+<label>Town/City</label>
+<input type="text" name="city">
+</div>
+
+<div class="col">
+<label>State</label>
+<input type="text" name="state">
+</div>
+
+</div>
+
+<button class="add-btn">
+Add Address
+</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

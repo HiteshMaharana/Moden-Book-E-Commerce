@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Success</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/success.css') }}">
+
+    <style>
+        /* 🔥 BACK BUTTON TOP RIGHT */
+        .back-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 18px;
+            background: #7c3aed;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .back-btn:hover {
+            background: #5b21b6;
+        }
+
+        .success-container {
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+<!-- BACKGROUND GLOW -->
+<div class="bg-glow"></div>
+
+<div class="success-container">
+
+    <!-- ANIMATION -->
+    <div class="success-animation">
+        <svg class="checkmark" viewBox="0 0 52 52">
+            <circle class="checkmark-circle" cx="26" cy="26" r="25"/>
+            <path class="checkmark-check" fill="none" d="M14 27l7 7 16-16"/>
+        </svg>
+    </div>
+
+    <h1>Payment Successful</h1>
+
+    <p>Transaction ID</p>
+    <h3>{{ txn_id }}</h3>
+
+</div>
+
+</body>
+</html>

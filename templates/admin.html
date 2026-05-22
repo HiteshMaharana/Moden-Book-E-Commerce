@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f3f3f3;
+            margin: 0;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+
+            background: #232f3e;
+
+            color: white;
+
+            padding: 15px 40px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        /* CONTAINER */
+
+        .container {
+            padding: 40px;
+        }
+
+        /* ORDER CARD */
+
+        .order-card {
+
+            background: white;
+
+            border-radius: 10px;
+
+            padding: 20px;
+
+            margin-bottom: 20px;
+
+            display: flex;
+
+            gap: 20px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+        }
+
+        /* PRODUCT IMAGE */
+
+        .order-card img {
+
+            width: 120px;
+
+            border-radius: 8px;
+
+        }
+
+        /* DETAILS */
+
+        .details {
+            flex: 1;
+        }
+
+        .details p {
+            margin: 4px 0;
+        }
+
+        .price {
+            font-size: 18px;
+            color: #b12704;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+
+        <h2>Admin Dashboard</h2>
+
+        <div>Welcome Admin</div>
+
+    </div>
+
+    <div class="container">
+
+        {% for order in orders %}
+
+        <div class="order-card">
+
+            <img src="{{ order[10] }}" alt="product">
+
+            <div class="details">
+
+                <h3>{{ order[8] }}</h3>
+
+                <p><b>Customer:</b> {{ order[1] }}</p>
+
+                <p><b>Email:</b> {{ order[2] }}</p>
+
+                <p><b>Phone:</b> {{ order[3] }}</p>
+
+                <p><b>Address:</b> {{ order[4] }}, {{ order[5] }}, {{ order[6] }} - {{ order[7] }}</p>
+
+                <p class="price">₹ {{ order[9] }}</p>
+
+                <p><b>Date:</b> {{ order[11] }}</p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+
+</html>
