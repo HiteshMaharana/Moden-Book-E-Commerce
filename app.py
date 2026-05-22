@@ -29,9 +29,9 @@ oauth = OAuth(app)
 
 google = oauth.register(
     name='google',
-    client_id="885034579992-mn8lgacub75v0rnrferc14834tg322bj.apps.googleusercontent.com",
-    client_secret="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",
-    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_id="__ADD-YOUR-CLIENT-ID__",
+    client_secret="__ADD-YOUR-SECRET-KEY__",
+    server_metadata_url='__YOUR_URL__',
     client_kwargs={
         'scope': 'openid email profile'
     }
@@ -42,8 +42,8 @@ google = oauth.register(
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="@Hitesh123",
-    database="bookish_db",
+    password="__PASS__",
+    database="__DATABASE-NAME__",
     auth_plugin='mysql_native_password'
 )
 cursor = db.cursor()
@@ -59,7 +59,7 @@ def home():
         return render_template("index.html")
 
 from flask import Flask, request, redirect, url_for, flash, render_template, session
-import re   # ✅ FIX ADDED
+import re   
 
 @app.route("/auth", methods=["GET", "POST"])
 def auth():
@@ -74,6 +74,7 @@ def auth():
             email = request.form.get("email")
             password = request.form.get("password")
 
+            # CONDITIONS FOR MAIL THAT MUST CHECK --
             email_pattern = r'^[a-zA-Z0-9._%+-]+@(gmail\.com|[a-zA-Z0-9.-]+\.edu|[a-zA-Z0-9.-]+\.in)$'
 
             # ✅ FIX WORKING
@@ -234,7 +235,7 @@ def book_details():
     price = request.args.get('price')
     image = request.args.get('image')
 
-    # 🔥 IMAGE → PDF mapping
+    #  IMAGE → PDF mapping
     pdf = BOOK_PDF_MAP.get(image)
 
     return render_template(
